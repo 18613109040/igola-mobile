@@ -1,0 +1,13 @@
+{ 
+    "plugins": [
+        "transform-runtime",
+        "transform-decorators",
+      [
+          "import",
+          {
+              "libraryName": "antd-mobile",
+              "style": true
+          }
+      ]
+  ]
+}
