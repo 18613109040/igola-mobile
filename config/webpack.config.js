@@ -40,7 +40,7 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 //   return defaultConfig;
 // };
 
-
+//https://lavas.baidu.com/guide/v1/foundation/lavas-start
 
 'use strict';
 
@@ -224,48 +224,48 @@ module.exports = (app, defaultConfig, dev = 'local') => ({
   plugins:[
     ...defaultConfig.plugins,
     // new BundleAnalyzerPlugin(),
-    // new ManifestPlugin({
-    //   fileName: 'asset-manifest.json',
-    // }),
-    // new SWPrecacheWebpackPlugin({
-    //   dontCacheBustUrlsMatching: /\.\w{8}\./,
-    //   filename: 'service-worker.js',
-    //   logger(message) {
-    //     if (message.indexOf('Total precache size is') === 0) {
-    //       return;
-    //     }
-    //     if (message.indexOf('Skipping static resource') === 0) {
-    //       return;
-    //     }
-    //     console.log(message);
-    //   },
-    //   minify: true,
-    //   navigateFallback:  '/index.html',
-    //   navigateFallbackWhitelist: [/^(?!\/__).*/],
-    //   staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
-    // }),
-    // new WebpackPwaManifest({
-    //   name: '我的测试应用', //应用名称，就是图标下面的显示名称
-    //   short_name: '我的测试应用', // 应用名称，但 name 无法显示完全时候则显示这个
-    //   description: 'pwa',
-    //   background_color: '#333', //相应的颜色
-    //   theme_color: '#333',
-    //   filename: 'manifest.[hash:8].json',
-    //   publicPath: '/',
-    //   icons: [ //设置图标，插件会自动帮你生成不同 size 的图片，但是图片大小必须大于最大 sizes
-    //     { 
-    //       src: path.join(__dirname, '../client/assets/app-logo.png') , //path.resolve(constants.publicPath, 'icon.png'),
-    //       sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
-    //       destination: path.join('icons')
-    //     }
-    //   ],
-    //   ios: {
-    //     'apple-mobile-web-app-title': 'Lindz\'s Blog',
-    //     'apple-mobile-web-app-status-bar-style': '#000',
-    //     'apple-mobile-web-app-capable': 'yes',
-    //     'apple-touch-icon': '//xxx.com/icon.png',
-    //   },
-    // })
+    new ManifestPlugin({
+      fileName: 'asset-manifest.json',
+    }),
+    new SWPrecacheWebpackPlugin({
+      dontCacheBustUrlsMatching: /\.\w{8}\./,
+      filename: 'service-worker.js',
+      logger(message) {
+        if (message.indexOf('Total precache size is') === 0) {
+          return;
+        }
+        if (message.indexOf('Skipping static resource') === 0) {
+          return;
+        }
+        console.log(message);
+      },
+      minify: true,
+      navigateFallback:  '/index.html',
+      navigateFallbackWhitelist: [/^(?!\/__).*/],
+      staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+    }),
+    new WebpackPwaManifest({
+      name: '我的测试应用', //应用名称，就是图标下面的显示名称
+      short_name: '我的测试应用', // 应用名称，但 name 无法显示完全时候则显示这个
+      description: 'pwa',
+      background_color: '#333', //相应的颜色
+      theme_color: '#333',
+      filename: 'manifest.json',// 'manifest.[hash:8].json',
+      publicPath: '/',
+      icons: [ //设置图标，插件会自动帮你生成不同 size 的图片，但是图片大小必须大于最大 sizes
+        { 
+          src: path.join(__dirname, '../client/assets/app-logo.png') , //path.resolve(constants.publicPath, 'icon.png'),
+          sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+          destination: path.join('icons')
+        }
+      ],
+      ios: {
+        'apple-mobile-web-app-title': 'Lindz\'s Blog',
+        'apple-mobile-web-app-status-bar-style': '#000',
+        'apple-mobile-web-app-capable': 'yes',
+        'apple-touch-icon': '//xxx.com/icon.png',
+      },
+    })
   ],
   resolve: {
     extensions: ['.json', '.js', '.jsx'],
