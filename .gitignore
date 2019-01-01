@@ -17,6 +17,5 @@ bower_components
 .eslintrc.json
 LiCENSE
 package-lock.json
-config
 .isomorphic
 .stats
